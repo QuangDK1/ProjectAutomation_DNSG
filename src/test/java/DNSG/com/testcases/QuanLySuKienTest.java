@@ -15,10 +15,6 @@ public class QuanLySuKienTest extends BaseTest {
     public void ThemMoiSuKienB2BThanhCong(){
 
     }
-    @Test(priority = 4)
-    public void ThemMoiSuKienB2BThatBai(){
-
-    }
 
     @Test(priority = 2)
     public void XoaSuKienB2B(){

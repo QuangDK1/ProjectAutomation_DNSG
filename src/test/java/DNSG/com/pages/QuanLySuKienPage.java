@@ -13,17 +13,11 @@ public class QuanLySuKienPage {
 
     }
 
-    public  void ThemMoiSuKienKhongFillData(){
-
-    }
 
     public void verifyThaoTacThemSuKienThanhCong(){
 
     }
 
-    public void verifyThaoTacThemSuKienThatBai(){
-
-    }
 
     public void verifyThaoChinhSuaSuKienThanhCong(){
 

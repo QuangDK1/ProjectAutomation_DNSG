@@ -13,17 +13,11 @@ public class DonViTaiTroPage {
 
     }
 
-    public  void ThemMoiDonViTaiTroKhongFillData(){
-
-    }
 
     public void verifyThaoTacThemDonViTaiTroThanhCong(){
 
     }
 
-    public void verifyThaoTacThemDonViTaiTroThatBai(){
-
-    }
 
     public void verifyThaoChinhSuaDonViTaiTroThanhCong(){
 

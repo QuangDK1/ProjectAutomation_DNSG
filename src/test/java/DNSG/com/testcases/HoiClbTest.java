@@ -15,10 +15,7 @@ public class HoiClbTest extends BaseTest {
     public void ThemMoiHoiClbThanhCong(){
 
     }
-    @Test(priority = 4)
-    public void ThemMoiHoiClbThatBai(){
 
-    }
 
     @Test(priority = 2)
     public void XoaHoiClb(){

@@ -13,17 +13,11 @@ public class HoiClbPage {
 
     }
 
-    public  void ThemMoiHoiClbKhongFillData(){
-
-    }
 
     public void verifyThaoTacThemHoiClbThanhCong(){
 
     }
 
-    public void verifyThaoTacThemHoiClbThatBai(){
-
-    }
 
     public void verifyThaoChinhSuaHoiClbThanhCong(){
 

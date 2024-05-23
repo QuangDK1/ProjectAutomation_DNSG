@@ -15,10 +15,7 @@ public class DoiViTaiTroTest extends BaseTest {
     public void ThemMoiDonViTaiTroThanhCong(){
 
     }
-    @Test(priority = 4)
-    public void ThemMoiDonViTaiTroThatBai(){
 
-    }
 
     @Test(priority = 2)
     public void XoaDonViTaiTro(){
