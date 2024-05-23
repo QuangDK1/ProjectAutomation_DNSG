@@ -9,35 +9,50 @@ public class CheckURLHeaderTest extends BaseTest {
     LoginPage loginPage;
     CheckURLHeader checkURLHeader;
 
-    @Test
+    @Test (priority = 1)
     public void verifyGioiThieuPage(){
         loginPage = new LoginPage();
-         //checkURLHeader = loginPage.LoginThanhCong("alt.zm-eoze7jtz@yopmail.com", "qua/ng2001");
-        //loginPage.LoginThanhCong("alt.zm-eoze7jtz@yopmail.com","quang2001");
+        checkURLHeader = new CheckURLHeader();
+        loginPage.LoginThanhCong("alt.zm-eoze7jtz@yopmail.com","quang2001");
         checkURLHeader.checkURLGioiThieu();
 
     }
 
-//    @Test
-//    public void verify9thmonthlyb2bPage(){
-//
-//    }
-//    @Test
-//    public void verifyGiaoThuongB2B(){
-//
-//    }
-//    @Test
-//    public void verifyHiepHoiHoiClb(){
-//
-//    }
-//    @Test
-//    public void verifySuKienDoiTac(){
-//
-//    }
-//    @Test
-//    public void verifyLienHe(){
-//
-//    }
+    @Test(priority = 2)
+    public void verify9thmonthlyb2bPage(){
+        loginPage = new LoginPage();
+        checkURLHeader = new CheckURLHeader();
+        loginPage.LoginThanhCong("alt.zm-eoze7jtz@yopmail.com","quang2001");
+        checkURLHeader.checkURL9thmonthlyb2b();
+    }
+    @Test (priority = 3)
+    public void verifyGiaoThuongB2B(){
+        loginPage = new LoginPage();
+        checkURLHeader = new CheckURLHeader();
+        loginPage.LoginThanhCong("alt.zm-eoze7jtz@yopmail.com","quang2001");
+        checkURLHeader.checkURLGiaoThuongB2B();
+    }
+    @Test (priority = 4)
+    public void verifyHiepHoiHoiClb(){
+        loginPage = new LoginPage();
+        checkURLHeader = new CheckURLHeader();
+        loginPage.LoginThanhCong("alt.zm-eoze7jtz@yopmail.com","quang2001");
+        checkURLHeader.checkURLHiepHoiHoiClb();
+    }
+    @Test (priority = 5)
+    public void verifySuKienDoiTac(){
+        loginPage = new LoginPage();
+        checkURLHeader = new CheckURLHeader();
+        loginPage.LoginThanhCong("alt.zm-eoze7jtz@yopmail.com","quang2001");
+        checkURLHeader.checkURLSuKienDoiTac();
+    }
+    @Test (priority = 6)
+    public void verifyLienHe(){
+        loginPage = new LoginPage();
+        checkURLHeader = new CheckURLHeader();
+        loginPage.LoginThanhCong("alt.zm-eoze7jtz@yopmail.com","quang2001");
+        checkURLHeader.checkURLLienHe();
+    }
 
 
 }

@@ -48,36 +48,42 @@ public class CheckURLHeader {
 
     public void checkURLGioiThieu(){
         WebUI.clickElement(clickpagethoithieu);
+        WebUI.sleep(2);
         boolean urltrue = WebUI.getCurrentUrl().equals("https://saigon-business.erp.meu-solutions.com/gioi-thieu");
         Assert.assertTrue(urltrue,"URL không đúng");
     }
 
     public void checkURL9thmonthlyb2b(){
         WebUI.clickElement(clickpage9thmonthlyb2b);
+        WebUI.sleep(2);
         boolean urltrue = WebUI.getCurrentUrl().equals("https://saigon-business.erp.meu-solutions.com/9th-monthly-b2b");
         Assert.assertTrue(urltrue,"URL không đúng");
     }
 
     public void checkURLGiaoThuongB2B(){
         WebUI.clickElement(clickpagegiaothuongb2b);
+        WebUI.sleep(2);
         boolean urltrue = WebUI.getCurrentUrl().equals("https://saigon-business.erp.meu-solutions.com/giao-thuong-b2b");
         Assert.assertTrue(urltrue,"URL không đúng");
     }
 
     public void checkURLHiepHoiHoiClb(){
         WebUI.clickElement(clickpagehoiclb);
+        WebUI.sleep(2);
         boolean urltrue = WebUI.getCurrentUrl().equals("https://saigon-business.erp.meu-solutions.com/hiep-hoi-hoi-cau-lac-bo");
         Assert.assertTrue(urltrue,"URL không đúng");
     }
 
     public void checkURLSuKienDoiTac(){
         WebUI.clickElement(clickpagesukiendoitac);
+        WebUI.sleep(2);
         boolean urltrue = WebUI.getCurrentUrl().equals("https://saigon-business.erp.meu-solutions.com/su-kien-doi-tac");
         Assert.assertTrue(urltrue,"URL không đúng");
     }
 
     public void checkURLLienHe(){
         WebUI.clickElement(clickpagelienhe);
+        WebUI.sleep(2);
         boolean urltrue = WebUI.getCurrentUrl().equals("https://saigon-business.erp.meu-solutions.com/lien-he");
         Assert.assertTrue(urltrue,"URL không đúng");
     }
