@@ -55,6 +55,7 @@ public class WebUI {
         logConsole("Open URL: " + URL);
     }
 
+
     public static String getCurrentUrl() {
         waitForPageLoaded();
         logConsole("Get Current URL: " + DriverManager.getDriver().getCurrentUrl());
