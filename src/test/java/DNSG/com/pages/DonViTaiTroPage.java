@@ -1,7 +1,6 @@
 package DNSG.com.pages;
 
 import org.openqa.selenium.By;
-import org.testng.Assert;
 import quangtester.com.keywords.WebUI;
 
 public class DonViTaiTroPage {
@@ -18,7 +17,7 @@ public class DonViTaiTroPage {
     By buttonLuuDonvi = By.xpath("//div/div[3]/button[2]");
     By doituong = By.xpath("//div[2]/div/div[1]/div[2]/div/div/div[3]");
     By popupXoa = By.xpath("//div/div[2]/button[2]");
-    By buttonLuuEdit = By.xpath("//div/div[3]/button[2]");
+    By buttonLuuEdit = By.xpath("//div[3]/div[3]/div/div[3]/button[2]");
 
     //page add mới đơn vị
     private String PAGE_URL_DVTTADMIN = "https://saigon-business.erp.meu-solutions.com/admin/partner";
@@ -48,7 +47,7 @@ public class DonViTaiTroPage {
         WebUI.clickElement(clickpagedonvitaitroadmin);
         WebUI.clickElement(doituong);
         WebUI.clickElement(buttonEditDonViTaiTro);
-        
+        //
         WebUI.clickElement(buttonLuuEdit);
         WebUI.sleep(2);
 

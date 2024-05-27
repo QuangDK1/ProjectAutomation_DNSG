@@ -67,7 +67,6 @@ public class WebUI {
         highLightElement(by);
         getWebElement(by).click();
         logConsole("Click on element " + by);
-        //Report
     }
 
     public static void setText(By by, String value) {
