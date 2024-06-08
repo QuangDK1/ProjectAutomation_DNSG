@@ -22,7 +22,6 @@ public class DonViTaiTroTest extends BaseTest {
         loginPage.LoginThanhCong("admin@meu-solutions.com","123456");
         donViTaiTroPage.ThemMoiDonViTaiTro("NhaTrang","https://github.com/QuangDK1/ProjectAutomation_DNSG");
 
-
     }
 
 

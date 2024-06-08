@@ -9,13 +9,13 @@ public class HoiClbTest extends BaseTest {
     LoginPage loginPage;
     HoiClbPage hoiClbPage;
 
-//    @Test(priority = 1)
-//    public void ThemMoiHoiClbThanhCong(){
-//       loginPage = new LoginPage();
-//       hoiClbPage = new HoiClbPage();
-//        loginPage.LoginThanhCong("admin@meu-solutions.com","123456");
-//        hoiClbPage.ThemMoiHoiClB();
-//    }
+    @Test(priority = 1)
+    public void ThemMoiHoiClbThanhCong(){
+       loginPage = new LoginPage();
+       hoiClbPage = new HoiClbPage();
+        loginPage.LoginThanhCong("admin@meu-solutions.com","123456");
+        hoiClbPage.ThemMoiHoiClB();
+    }
 //
 //
 //    @Test(priority = 2)

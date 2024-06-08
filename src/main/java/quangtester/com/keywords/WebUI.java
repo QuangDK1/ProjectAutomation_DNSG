@@ -8,6 +8,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import quangtester.com.drivers.DriverManager;
 
+import java.awt.*;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.KeyEvent;
 import java.time.Duration;
 import java.util.List;
 
@@ -15,7 +18,7 @@ public class WebUI {
 
     private static int EXPLICIT_WAIT_TIMEOUT = 10;
     private static int WAIT_PAGE_LEADED_TIMEOUT = 30;
-
+    private static Robot robot;
 
     public static WebElement getWebElement(By by) {
         return DriverManager.getDriver().findElement(by);
@@ -40,6 +43,13 @@ public class WebUI {
             sleep(1);
         }
         return getWebElement(by);
+    }
+    public static void clickElementWithJS(By by){
+        JavascriptExecutor js = (JavascriptExecutor) DriverManager.getDriver();
+        waitForPageLoaded();
+        waitForElementVisible(by);
+        js.executeScript("arguments[0].scrollIntoView(true);", getWebElement(by));
+        js.executeScript("arguments[0].click();", getWebElement(by));
     }
 
     public static void rightClickElement(By by) {
@@ -74,6 +84,25 @@ public class WebUI {
         getWebElement(by).sendKeys(value);
         logConsole("Set text " + value + " on element " + by);
     }
+    public static void uploadFileRobotClass(String FileLocation) {
+        try {
+            robot = new Robot();
+        } catch (AWTException e) {
+            throw new RuntimeException(e);
+        }
+        StringSelection stringSelection = new StringSelection(FileLocation);
+        Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, null);
+        robot.setAutoDelay(1000);
+        robot.keyPress(KeyEvent.VK_CONTROL);
+        robot.keyPress(KeyEvent.VK_V);
+        robot.keyRelease(KeyEvent.VK_CONTROL);
+        robot.keyRelease(KeyEvent.VK_V);
+        robot.setAutoDelay(1000);
+        robot.keyPress(KeyEvent.VK_ENTER);
+        robot.keyRelease(KeyEvent.VK_ENTER);
+    }
+
+
 
     public static String getTextElement(By by) {
         waitForElementVisible(by);
