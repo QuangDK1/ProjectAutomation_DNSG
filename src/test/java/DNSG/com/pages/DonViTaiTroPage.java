@@ -2,6 +2,7 @@ package DNSG.com.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 import quangtester.com.helpers.SystemsHelper;
 import quangtester.com.keywords.WebUI;
 
@@ -33,6 +34,12 @@ public class DonViTaiTroPage {
         WebUI.clickElement(buttonLuuDonvi);
         WebUI.sleep(1.5);
     }
+    By MessageThemDVTTThanhCong = By.xpath("//body/div[@id='app']/div[1]/div[1]");
+    public void verifyThemMoiDonViTaiTroThanhCong(String messageThemDVTTthanhcong){
+        boolean MessageThemDonViTaiTroThanhCong = WebUI.getTextElement(MessageThemDVTTThanhCong).equals(messageThemDVTTthanhcong);
+        Assert.assertTrue(MessageThemDonViTaiTroThanhCong,"Fail");
+    }
+
 
     //Xóa Đơn vị
     By buttonXoaDonViTaiTro = By.xpath("//div/div/div[1]/div[5]/div/button[2]");
@@ -43,8 +50,16 @@ public class DonViTaiTroPage {
         WebUI.clickElement(buttonXoaDonViTaiTro);
         WebUI.clickElement(popupXoa);
         WebUI.sleep(2);
-
     }
+    By messageXoaDonViThanhCong = By.xpath("//div[contains(text(),'Thao tác thành công')]");
+    public void verifyXoaDonViThanhCong(){
+        boolean MessageXoaDonViThanhCong = WebUI.getTextElement(messageXoaDonViThanhCong).equals("Thao tác thành công");
+        Assert.assertTrue(MessageXoaDonViThanhCong,"Fail");
+    }
+
+
+
+
 
     //Chỉnh sửa ơn vị
     By buttonEditDonViTaiTro = By.xpath("//div/div[3]/div[5]/div/button[1]");
@@ -55,6 +70,11 @@ public class DonViTaiTroPage {
         WebUI.clickElement(buttonEditDonViTaiTro);
         WebUI.clickElement(buttonLuuEdit);
         WebUI.sleep(2);
-
     }
+    By messageChinhSuDonViThanhCong = By.xpath("//div[contains(text(),'Thao tác thành công')]");
+    public void verifyChinhSuDonViThanhCong(){
+        boolean MessageChinhSuaDonVIThanhCong = WebUI.getTextElement(messageChinhSuDonViThanhCong).equals("Thao tác thành công");
+        Assert.assertTrue(MessageChinhSuaDonVIThanhCong,"Fail");
+    }
+
 }

@@ -46,45 +46,45 @@ public class CheckURLHeader {
     By clickpagelienhe = By.xpath("//div[1]/div[6]/a[1]");
 
 
-    public void checkURLGioiThieu(){
+    public void checkURLGioiThieu(String PageGioiThieu){
         WebUI.clickElement(clickpagethoithieu);
         WebUI.sleep(2);
-        boolean urltrue = WebUI.getCurrentUrl().equals("https://saigon-business.erp.meu-solutions.com/gioi-thieu");
+        boolean urltrue = WebUI.getCurrentUrl().equals(PageGioiThieu);
         Assert.assertTrue(urltrue,"URL không đúng");
     }
 
-    public void checkURL9thmonthlyb2b(){
+    public void checkURL9thmonthlyb2b(String Page9thmonthlyb2b){
         WebUI.clickElement(clickpage9thmonthlyb2b);
         WebUI.sleep(2);
-        boolean urltrue = WebUI.getCurrentUrl().equals("https://saigon-business.erp.meu-solutions.com/9th-monthly-b2b");
+        boolean urltrue = WebUI.getCurrentUrl().equals(Page9thmonthlyb2b);
         Assert.assertTrue(urltrue,"URL không đúng");
     }
 
-    public void checkURLGiaoThuongB2B(){
+    public void checkURLGiaoThuongB2B(String PageGiaoThuongB2B){
         WebUI.clickElement(clickpagegiaothuongb2b);
         WebUI.sleep(2);
-        boolean urltrue = WebUI.getCurrentUrl().equals("https://saigon-business.erp.meu-solutions.com/giao-thuong-b2b");
+        boolean urltrue = WebUI.getCurrentUrl().equals(PageGiaoThuongB2B);
         Assert.assertTrue(urltrue,"URL không đúng");
     }
 
-    public void checkURLHiepHoiHoiClb(){
+    public void checkURLHiepHoiHoiClb(String PageHoiClb){
         WebUI.clickElement(clickpagehoiclb);
         WebUI.sleep(2);
-        boolean urltrue = WebUI.getCurrentUrl().equals("https://saigon-business.erp.meu-solutions.com/hiep-hoi-hoi-cau-lac-bo");
+        boolean urltrue = WebUI.getCurrentUrl().equals(PageHoiClb);
         Assert.assertTrue(urltrue,"URL không đúng");
     }
 
-    public void checkURLSuKienDoiTac(){
+    public void checkURLSuKienDoiTac(String PageSuKienDoitac){
         WebUI.clickElement(clickpagesukiendoitac);
         WebUI.sleep(2);
-        boolean urltrue = WebUI.getCurrentUrl().equals("https://saigon-business.erp.meu-solutions.com/su-kien-doi-tac");
+        boolean urltrue = WebUI.getCurrentUrl().equals(PageSuKienDoitac);
         Assert.assertTrue(urltrue,"URL không đúng");
     }
 
-    public void checkURLLienHe(){
+    public void checkURLLienHe(String PageLienHe){
         WebUI.clickElement(clickpagelienhe);
         WebUI.sleep(2);
-        boolean urltrue = WebUI.getCurrentUrl().equals("https://saigon-business.erp.meu-solutions.com/lien-he");
+        boolean urltrue = WebUI.getCurrentUrl().equals(PageLienHe);
         Assert.assertTrue(urltrue,"URL không đúng");
     }
 }

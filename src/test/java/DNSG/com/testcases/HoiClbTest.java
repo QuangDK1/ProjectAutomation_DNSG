@@ -4,33 +4,50 @@ import DNSG.com.common.BaseTest;
 import DNSG.com.pages.HoiClbPage;
 import DNSG.com.pages.LoginPage;
 import org.testng.annotations.Test;
+import quangtester.com.helpers.ExcelHelper;
 
 public class HoiClbTest extends BaseTest {
     LoginPage loginPage;
     HoiClbPage hoiClbPage;
+    ExcelHelper excelHelper;
 
     @Test(priority = 1)
     public void ThemMoiHoiClbThanhCong(){
        loginPage = new LoginPage();
        hoiClbPage = new HoiClbPage();
-        loginPage.LoginThanhCong("admin@meu-solutions.com","123456");
-        hoiClbPage.ThemMoiHoiClB();
+       excelHelper = new ExcelHelper();
+       excelHelper.setExcelFile("src\\main\\resources\\datatest\\HoiClb.xlsx","ThemHoiClb");
+       loginPage.LoginThanhCong(excelHelper.getCellData(2,5),
+                                excelHelper.getCellData(3,5));
+
+       hoiClbPage.ThemMoiHoiClB(excelHelper.getCellData(8,5),
+                                excelHelper.getCellData(9,5),
+                                excelHelper.getCellData(10,5));
+       hoiClbPage.veriifyThemHoiThanhCong(excelHelper.getCellData(13,5));
     }
-//
-//
-//    @Test(priority = 2)
-//    public void XoaHoiClb(){
-//        loginPage = new LoginPage();
-//        hoiClbPage = new HoiClbPage();
-//        loginPage.LoginThanhCong("admin@meu-solutions.com","123456");
-//        hoiClbPage.XoaHoiClb();
-//    }
-//
-//    @Test(priority = 3)
-//    public void ChinhSuaHoiClbThanhCong(){
-//        loginPage = new LoginPage();
-//        hoiClbPage = new HoiClbPage();
-//        loginPage.LoginThanhCong("admin@meu-solutions.com","123456");
-//        hoiClbPage.EditHoiClb();
-//    }
+
+
+    @Test(priority = 2)
+    public void XoaHoiClb(){
+        loginPage = new LoginPage();
+        hoiClbPage = new HoiClbPage();
+        excelHelper = new ExcelHelper();
+        excelHelper.setExcelFile("src\\main\\resources\\datatest\\HoiClb.xlsx","XoaHoiClb");
+        loginPage.LoginThanhCong(excelHelper.getCellData(1,1),
+                                 excelHelper.getCellData(2,1));
+        hoiClbPage.XoaHoiClb();
+        hoiClbPage.verifyXoaHoiThanhCong();
+    }
+
+    @Test(priority = 3)
+    public void ChinhSuaHoiClbThanhCong(){
+        loginPage = new LoginPage();
+        hoiClbPage = new HoiClbPage();
+        excelHelper = new ExcelHelper();
+        excelHelper.setExcelFile("src\\main\\resources\\datatest\\HoiClb.xlsx","EditHoiClb");
+        loginPage.LoginThanhCong(excelHelper.getCellData(1,1),
+                                 excelHelper.getCellData(2,1));
+        hoiClbPage.EditHoiClb();
+        hoiClbPage.verifyChinhSuaThanhCong();
+    }
 }

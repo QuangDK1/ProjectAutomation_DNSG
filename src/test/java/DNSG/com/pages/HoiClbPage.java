@@ -1,6 +1,8 @@
 package DNSG.com.pages;
 
+import org.checkerframework.checker.units.qual.C;
 import org.openqa.selenium.By;
+import org.testng.Assert;
 import quangtester.com.keywords.WebUI;
 
 public class HoiClbPage {
@@ -20,41 +22,58 @@ public class HoiClbPage {
     By logohoiclb = By.xpath("//div[2]/div/div[1]/label");
     By tenhoiclb = By.xpath("//div/div[2]/div/input");
     By emailhoiclb = By.xpath("//div/div[3]/div/input");
-    By chieukhau = By.xpath("//div/div[4]/div/input");
+    By chieckhau = By.xpath("//div/div[4]/div/input");
     By btnluuhoiclb = By.xpath("//div[3]/div[1]/div[3]/button[2]");
-    public void ThemMoiHoiClB(){
+    public void ThemMoiHoiClB(String TenHoiClb, String EmailHoi, String ChietKhau){
         WebUI.clickElement(clickpagehoiclbadmin);
         WebUI.clickElement(buttonthemmoihoiclb);
         WebUI.clickElement(logohoiclb);
         WebUI.uploadFileRobotClass("D:\\Code_Automation\\ProjectAutomation_DNSG\\src\\main\\resources\\datatest\\img2.png");
-        WebUI.setText(tenhoiclb ,"QuangPham");
-        WebUI.setText(emailhoiclb,"phamquang@gmail.com");
-        WebUI.setText(chieukhau,"10%");
+        WebUI.setText(tenhoiclb ,TenHoiClb);
+        WebUI.setText(emailhoiclb,EmailHoi);
+        WebUI.setText(chieckhau,ChietKhau);
         WebUI.clickElement(btnluuhoiclb);
         WebUI.sleep(1.5);
     }
+    By messageThemHoiThanhCong = By.xpath("//div[contains(text(),'Thao tác thành công')]");
+    public void veriifyThemHoiThanhCong(String messageThemHoiClbthanhcong){
+        boolean MessageThemHoiThanhCong = WebUI.getTextElement(messageThemHoiThanhCong).equals(messageThemHoiClbthanhcong);
+        Assert.assertTrue(MessageThemHoiThanhCong,"Fail");
+    }
+
+
 
     //Xóa Hội Clb
     By btnXoaHoiClb = By.xpath("//div[3]/div[8]/div/button[2]");
     By popupXoaHoiClb = By.xpath("//div[3]/div/div[2]/button[2]");
-    By doituonghoiclb = By.xpath("//div/div[2]/div/div[1]/div[2]/div/div/div[3]");
+
     public void XoaHoiClb(){
         WebUI.clickElement(clickpagehoiclbadmin);
-        WebUI.clickElement(doituonghoiclb);
+        //Chua chon dc doi tuong
         WebUI.clickElement(btnXoaHoiClb);
         WebUI.clickElement(popupXoaHoiClb);
         WebUI.sleep(2);
     }
+    By messageXoaHoi = By.xpath("//div[contains(text(),'Thao tác thành công')]");
+    public void verifyXoaHoiThanhCong(){
+        boolean MessageXoaHoiThanhCong = WebUI.getTextElement(messageXoaHoi).equals("Thao tác thành công");
+        Assert.assertTrue(MessageXoaHoiThanhCong,"Fail");
+    }
+
 
     //Chỉnh Sửa Hội Clb
     By btnEditHoiClb = By.xpath("//div/div[3]/div[8]/div/button[1]");
     By btnLuutrongEditHoi = By.xpath("//div/div[3]/button[2]");
     public void EditHoiClb(){
         WebUI.clickElement(clickpagehoiclbadmin);
-        WebUI.clickElement(doituonghoiclb);
         WebUI.clickElement(btnEditHoiClb);
         WebUI.sleep(1.5);
         WebUI.clickElement(btnLuutrongEditHoi);
+    }
+    By messageChinhSuaHoi = By.xpath("//div[contains(text(),'Thao tác thành công')]");
+    public void verifyChinhSuaThanhCong(){
+        boolean MessageChinhSuHoi = WebUI.getTextElement(messageChinhSuaHoi).equals("Thao tác thành công");
+        Assert.assertTrue(MessageChinhSuHoi,"Fail");
     }
 
 }

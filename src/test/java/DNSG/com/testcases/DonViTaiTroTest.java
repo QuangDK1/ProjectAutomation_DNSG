@@ -6,11 +6,13 @@ import DNSG.com.pages.LoginPage;
 
 import com.google.j2objc.annotations.Weak;
 import org.testng.annotations.Test;
+import quangtester.com.helpers.ExcelHelper;
 import quangtester.com.keywords.WebUI;
 
 public class DonViTaiTroTest extends BaseTest {
     LoginPage loginPage;
     DonViTaiTroPage donViTaiTroPage;
+    ExcelHelper excelHelper;
 
 
 
@@ -19,8 +21,15 @@ public class DonViTaiTroTest extends BaseTest {
     public void ThemMoiDonViTaiTroThanhCong(){
         loginPage = new LoginPage();
         donViTaiTroPage = new DonViTaiTroPage();
-        loginPage.LoginThanhCong("admin@meu-solutions.com","123456");
-        donViTaiTroPage.ThemMoiDonViTaiTro("NhaTrang","https://github.com/QuangDK1/ProjectAutomation_DNSG");
+        excelHelper = new ExcelHelper();
+        excelHelper.setExcelFile("src\\main\\resources\\datatest\\DonViTaiTroPage.xlsx","ThemDonVi");
+        loginPage.LoginThanhCong(excelHelper.getCellData(2,5),
+                                 excelHelper.getCellData(3,5));
+
+        excelHelper.setExcelFile("src\\main\\resources\\datatest\\DonViTaiTroPage.xlsx","ThemDonVi");
+        donViTaiTroPage.ThemMoiDonViTaiTro(excelHelper.getCellData(8,5),
+                                            excelHelper.getCellData(9,5));
+        donViTaiTroPage.verifyThemMoiDonViTaiTroThanhCong(excelHelper.getCellData(12,5));
 
     }
 
@@ -29,8 +38,12 @@ public class DonViTaiTroTest extends BaseTest {
     public void XoaDonViTaiTro(){
         loginPage = new LoginPage();
         donViTaiTroPage = new DonViTaiTroPage();
-        loginPage.LoginThanhCong("admin@meu-solutions.com","123456");
+        excelHelper = new ExcelHelper();
+        excelHelper.setExcelFile("src\\main\\resources\\datatest\\DonViTaiTroPage.xlsx","XoaDonVi");
+        loginPage.LoginThanhCong(excelHelper.getCellData(1,1),
+                                 excelHelper.getCellData(2,1));
         donViTaiTroPage.XoaDonViTaiTro();
+        donViTaiTroPage.verifyXoaDonViThanhCong();
 
 
     }
@@ -39,8 +52,12 @@ public class DonViTaiTroTest extends BaseTest {
     public void ChinhSuaDonViTaiTroThanhCong(){
         loginPage = new LoginPage();
         donViTaiTroPage = new DonViTaiTroPage();
-        loginPage.LoginThanhCong("admin@meu-solutions.com","123456");
+        excelHelper = new ExcelHelper();
+        excelHelper.setExcelFile("src\\main\\resources\\datatest\\DonViTaiTroPage.xlsx","EditDonVI");
+        loginPage.LoginThanhCong(excelHelper.getCellData(1,1),
+                                 excelHelper.getCellData(2,1));
         donViTaiTroPage.EditDonViTaiTro();
+        donViTaiTroPage.verifyChinhSuDonViThanhCong();
 
 
     }

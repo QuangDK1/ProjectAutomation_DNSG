@@ -45,7 +45,7 @@ public class QuanLySuKienPage {
     By gioithieumotangan = By.xpath("//textarea[@id=':r23:']");
     By gioithieuchung = By.xpath("//div/div[3]/div[2]/div[2]/div/div[2]/div[1]");
     By btnLuuSKnew = By.xpath("//div/div/main/div/div[7]/button[2]");
-    public void ThemMoiSuKien(String value_tensukien, String value_diadiem, String vulue_gioithieungan, String value_gioithieuchung  ) {
+    public void ThemMoiSuKien(String TenSuKien, String DiaDiem, String GioiThieuNgan, String GioiThieuChung  ) {
         WebUI.clickElement(pageQLSK);
         WebUI.clickElement(pageSuKienB2B);
         WebUI.clickElement(btnThemMoiSK);
@@ -55,7 +55,7 @@ public class QuanLySuKienPage {
         WebUI.uploadFileRobotClass("D:\\Code_Automation\\ProjectAutomation_DNSG\\src\\main\\resources\\datatest\\img4.png");
 
         //Tên sự kiện
-        WebUI.setText(tensukien,value_tensukien);
+        WebUI.setText(tensukien,TenSuKien);
 
         //ngày diễn ra
         WebUI.clickElement(ngaydienrasukien);
@@ -77,23 +77,25 @@ public class QuanLySuKienPage {
         //địa điểm
         WebUI.clickElement(SelectTinhThanhPho);
         WebUI.clickElementWithJS(tinh);
-        WebUI.setText(diemdiem,value_diadiem);
+        WebUI.setText(diemdiem,DiaDiem);
 
         //Giới thiệu
-        WebUI.setText(gioithieumotangan,vulue_gioithieungan);
+        WebUI.setText(gioithieumotangan,GioiThieuNgan);
 
         //Giới thiệu chung
-        WebUI.setText(gioithieuchung,value_gioithieuchung);
+        WebUI.setText(gioithieuchung,GioiThieuChung);
 
         //Click Button Lưu Sự Kiện
-        WebUI.clickElementWithJS(btnLuuSKnew);
+        WebUI.scrollToElementWithJS(btnLuuSKnew);
+        WebUI.clickElement(btnLuuSKnew);
+        WebUI.sleep(2);
 
     }
 
-
-    public void verifyThemMoiSuKien() {
-        //câu message thêm thành công
-        //verify xem sự kiện đã thêm có trong ds hay không bằng cách rà xót tất cả các tên sự kiện có chứa tên sk vừa thêm hay không
+    By MessagethemmoiSKthanhcong = By.xpath("//div[contains(text(),'Thao tác thành công')]");
+    public void verifyThemMoiSuKienThanhCong(String messageThemSKthanhcong) {
+        boolean MessageThemSuKienThanhCong = WebUI.getTextElement(MessagethemmoiSKthanhcong).equals(messageThemSKthanhcong);
+        Assert.assertTrue(MessageThemSuKienThanhCong,"Fail");
     }
 
 
@@ -106,9 +108,6 @@ public class QuanLySuKienPage {
 
     }
 
-    public void checkdatatablebycolumn(int column, String value) {
-    }
-
 
     //Xóa Sự Kiên B2B
     By btnXoaSK = By.xpath("//div[2]/div/div/div[2]/div[7]/div/button[2]");
@@ -116,40 +115,38 @@ public class QuanLySuKienPage {
     public void XoaSuKien() {
         WebUI.clickElement(pageQLSK);
         WebUI.clickElement(pageSuKienB2B);
-
-
     }
 
 
-    public void checkSearchTableByColumn(String value) {
-        //Xác định số dòng của table sau khi search
-        List<WebElement> row = DriverManager.getDriver().findElements(By.xpath("//div/div[2]/div/div[2]/div/div/div[1]/div[2]"));
-        int rowTotal = row.size(); //Lấy ra số dòng
-        System.out.println("Số dòng tìm thấy: " + rowTotal);
-
-        //Duyệt từng dòng
-        for (int i = 1; i <= rowTotal; i++) {
-            WebElement elementCheck = DriverManager.getDriver().findElement(By.xpath("//div[2]/div/div/div["+i+"]/div[3]/div"));
-
-            JavascriptExecutor js = (JavascriptExecutor) DriverManager.getDriver();
-            js.executeScript("arguments[0].scrollIntoView(true);", elementCheck);
-
-            Boolean ColumnValue = elementCheck.getText().toUpperCase().equals(value.toUpperCase());
-            System.out.println("Text của hàng này là: " + elementCheck.getText());
-            if (ColumnValue == true) {
-                System.out.println("Đã tìm thấy giá trị");
-                break;
-            }
-            else if (i == rowTotal){
-                System.out.println("Không tìm thấy giá trị");
-                Assert.fail("Đã tìm hết mà không thấy tên sự kiện mong muốn");
-            }
-        }
-    }
-
-    private final By clickDangDienRaTab = By.xpath("//div/main/div/div[1]/div/div/button[2]");
-    public void GotoQuanLiSuKienPage(){
-        WebUI.clickElement(pageQLSK);
-        WebUI.clickElement(pageSuKienB2B);
-    }
+//    public void checkSearchTableByColumn(String value) {
+//        //Xác định số dòng của table sau khi search
+//        List<WebElement> row = DriverManager.getDriver().findElements(By.xpath("//div/div[2]/div/div[2]/div/div/div[1]/div[2]"));
+//        int rowTotal = row.size(); //Lấy ra số dòng
+//        System.out.println("Số dòng tìm thấy: " + rowTotal);
+//
+//        //Duyệt từng dòng
+//        for (int i = 1; i <= rowTotal; i++) {
+//            WebElement elementCheck = DriverManager.getDriver().findElement(By.xpath("//div[2]/div/div/div["+i+"]/div[3]/div"));
+//
+//            JavascriptExecutor js = (JavascriptExecutor) DriverManager.getDriver();
+//            js.executeScript("arguments[0].scrollIntoView(true);", elementCheck);
+//
+//            Boolean ColumnValue = elementCheck.getText().toUpperCase().equals(value.toUpperCase());
+//            System.out.println("Text của hàng này là: " + elementCheck.getText());
+//            if (ColumnValue == true) {
+//                System.out.println("Đã tìm thấy giá trị");
+//                break;
+//            }
+//            else if (i == rowTotal){
+//                System.out.println("Không tìm thấy giá trị");
+//                Assert.fail("Đã tìm hết mà không thấy tên sự kiện mong muốn");
+//            }
+//        }
+//    }
+//
+//    private final By clickDangDienRaTab = By.xpath("//div/main/div/div[1]/div/div/button[2]");
+//    public void GotoQuanLiSuKienPage(){
+//        WebUI.clickElement(pageQLSK);
+//        WebUI.clickElement(pageSuKienB2B);
+//    }
 }

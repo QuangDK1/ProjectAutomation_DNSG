@@ -3,21 +3,30 @@ package DNSG.com.testcases;
 import DNSG.com.common.BaseTest;
 import DNSG.com.pages.LoginPage;
 import org.testng.annotations.Test;
+import quangtester.com.helpers.ExcelHelper;
 
 public class LoginTest extends BaseTest {
     LoginPage loginPage;
+    ExcelHelper excelHelper;
 
     @Test (priority = 2)
     public void loginTestDNSGSuccess(){
         loginPage = new LoginPage();
-        loginPage.LoginThanhCong("alt.zm-eoze7jtz@yopmail.com","quang2001");
-        loginPage.verifyLoginThanhCong();
+        excelHelper = new ExcelHelper();
+        excelHelper.setExcelFile("src\\main\\resources\\datatest\\LoginPage.xlsx","AccountUser");
+        loginPage.LoginThanhCong(excelHelper.getCellData(2,5),
+                                 excelHelper.getCellData(3,5));
+        loginPage.verifyLoginThanhCong(excelHelper.getCellData(5,5));
+
     }
 
     @Test (priority = 1)
     public void loginTestDNSGThatBai(){
         loginPage = new LoginPage();
-        loginPage.LoginThanhCong("alt.zm-eoze7jtz@yopmail.com" , "123456");
-        loginPage.verifyLoginThatBai();
+        excelHelper = new ExcelHelper();
+        excelHelper.setExcelFile("src\\main\\resources\\datatest\\LoginPage.xlsx","AccountUser");
+        loginPage.LoginThanhCong(excelHelper.getCellData(7,5),
+                                 excelHelper.getCellData(8,5));
+        loginPage.verifyLoginThatBai(excelHelper.getCellData(10,5));
     }
 }
