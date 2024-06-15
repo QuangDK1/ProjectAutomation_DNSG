@@ -9,7 +9,7 @@ public class LoginTest extends BaseTest {
     LoginPage loginPage;
     ExcelHelper excelHelper;
 
-    @Test (priority = 2)
+    @Test (priority = 1)
     public void loginTestDNSGSuccess(){
         loginPage = new LoginPage();
         excelHelper = new ExcelHelper();
@@ -20,7 +20,7 @@ public class LoginTest extends BaseTest {
 
     }
 
-    @Test (priority = 1)
+    @Test (priority = 2)
     public void loginTestDNSGThatBai(){
         loginPage = new LoginPage();
         excelHelper = new ExcelHelper();

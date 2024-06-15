@@ -40,10 +40,10 @@ public class DonViTaiTroTest extends BaseTest {
         donViTaiTroPage = new DonViTaiTroPage();
         excelHelper = new ExcelHelper();
         excelHelper.setExcelFile("src\\main\\resources\\datatest\\DonViTaiTroPage.xlsx","XoaDonVi");
-        loginPage.LoginThanhCong(excelHelper.getCellData(1,1),
-                                 excelHelper.getCellData(2,1));
+        loginPage.LoginThanhCong(excelHelper.getCellData(2,5),
+                                 excelHelper.getCellData(3,5));
         donViTaiTroPage.XoaDonViTaiTro();
-        donViTaiTroPage.verifyXoaDonViThanhCong();
+        donViTaiTroPage.verifyXoaDonViThanhCong(excelHelper.getCellData(9,5));
 
 
     }

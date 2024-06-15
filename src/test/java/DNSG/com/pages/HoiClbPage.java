@@ -44,19 +44,21 @@ public class HoiClbPage {
 
 
     //Xóa Hội Clb
-    By btnXoaHoiClb = By.xpath("//div[3]/div[8]/div/button[2]");
-    By popupXoaHoiClb = By.xpath("//div[3]/div/div[2]/button[2]");
+    By btnXoaHoiClb = By.xpath("//div[2]/div/div[2]/div/div[1]/div[10]/div/button[2]");
+    By doituongHoi = By.xpath("//div/div[2]/div/div/div[2]/div/div[2]/div/div[1]");
+    By popupXoaHoiClb = By.xpath("//div/div[2]/button[2]");
 
     public void XoaHoiClb(){
         WebUI.clickElement(clickpagehoiclbadmin);
-        //Chua chon dc doi tuong
+        WebUI.clickElement(doituongHoi);
         WebUI.clickElement(btnXoaHoiClb);
         WebUI.clickElement(popupXoaHoiClb);
-        WebUI.sleep(2);
+        WebUI.sleep(1);
     }
+
     By messageXoaHoi = By.xpath("//div[contains(text(),'Thao tác thành công')]");
-    public void verifyXoaHoiThanhCong(){
-        boolean MessageXoaHoiThanhCong = WebUI.getTextElement(messageXoaHoi).equals("Thao tác thành công");
+    public void verifyXoaHoiThanhCong(String messageXoaHoiClb){
+        boolean MessageXoaHoiThanhCong = WebUI.getTextElement(messageXoaHoi).equals(messageXoaHoiClb);
         Assert.assertTrue(MessageXoaHoiThanhCong,"Fail");
     }
 

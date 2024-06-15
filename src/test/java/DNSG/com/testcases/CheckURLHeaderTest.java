@@ -22,10 +22,6 @@ public class CheckURLHeaderTest extends BaseTest {
 
         excelHelper.setExcelFile("src\\main\\resources\\datatest\\AcconutCheckURL.xlsx","CheckURL");
         checkURLHeader.checkURLGioiThieu(excelHelper.getCellData(7,5));
-
-
-
-
     }
 
     @Test(priority = 2)
@@ -38,6 +34,7 @@ public class CheckURLHeaderTest extends BaseTest {
                                  excelHelper.getCellData(2,1));
         checkURLHeader.checkURL9thmonthlyb2b("https://saigon-business.erp.meu-solutions.com/9th-monthly-b2b");
     }
+
     @Test (priority = 3)
     public void verifyGiaoThuongB2B(){
         loginPage = new LoginPage();
@@ -48,6 +45,7 @@ public class CheckURLHeaderTest extends BaseTest {
                                  excelHelper.getCellData(2,1));
         checkURLHeader.checkURLGiaoThuongB2B("https://saigon-business.erp.meu-solutions.com/giao-thuong-b2b");
     }
+
     @Test (priority = 4)
     public void verifyHiepHoiHoiClb(){
         loginPage = new LoginPage();
@@ -58,6 +56,7 @@ public class CheckURLHeaderTest extends BaseTest {
                                  excelHelper.getCellData(2,1));
         checkURLHeader.checkURLHiepHoiHoiClb("https://saigon-business.erp.meu-solutions.com/hiep-hoi-hoi-cau-lac-bo");
     }
+
     @Test (priority = 5)
     public void verifySuKienDoiTac(){
         loginPage = new LoginPage();
@@ -68,6 +67,7 @@ public class CheckURLHeaderTest extends BaseTest {
                                  excelHelper.getCellData(2,1));
         checkURLHeader.checkURLSuKienDoiTac("https://saigon-business.erp.meu-solutions.com/su-kien-doi-tac");
     }
+
     @Test (priority = 6)
     public void verifyLienHe(){
         loginPage = new LoginPage();
@@ -78,6 +78,5 @@ public class CheckURLHeaderTest extends BaseTest {
                                  excelHelper.getCellData(2,1));
         checkURLHeader.checkURLLienHe("https://saigon-business.erp.meu-solutions.com/lien-he");
     }
-
 
 }

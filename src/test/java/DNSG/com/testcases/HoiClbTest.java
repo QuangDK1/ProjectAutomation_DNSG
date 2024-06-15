@@ -33,10 +33,10 @@ public class HoiClbTest extends BaseTest {
         hoiClbPage = new HoiClbPage();
         excelHelper = new ExcelHelper();
         excelHelper.setExcelFile("src\\main\\resources\\datatest\\HoiClb.xlsx","XoaHoiClb");
-        loginPage.LoginThanhCong(excelHelper.getCellData(1,1),
-                                 excelHelper.getCellData(2,1));
+        loginPage.LoginThanhCong(excelHelper.getCellData(2,5),
+                                 excelHelper.getCellData(3,5));
         hoiClbPage.XoaHoiClb();
-        hoiClbPage.verifyXoaHoiThanhCong();
+        hoiClbPage.verifyXoaHoiThanhCong(excelHelper.getCellData(9,5));
     }
 
     @Test(priority = 3)

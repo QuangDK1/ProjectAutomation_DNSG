@@ -17,9 +17,6 @@ public class QuanLySuKienPage {
     By pageSuKienB2B = By.xpath("//div[2]/div/div/div/div[3]/div/span");
 
 
-
-
-
     private String URLQLSK = "https://saigon-business.erp.meu-solutions.com/admin/event/b2b-event";
     private String PageText = "Sự kiện B2B";
 
@@ -100,22 +97,39 @@ public class QuanLySuKienPage {
 
 
     //Chỉnh sửa Sự Kiện B2B
-    By btnEditSK = By.xpath("//div/div/div[2]/div[7]/div/button[1]");
+    By btnEditSK = By.xpath("//div/div/div[2]/div/div[2]/div/div[1]/div[8]/div/button[1]");
+    By doituongedit = By.xpath("//div/div[2]/div/div/div[2]/div/div[2]/div/div[1]");
     public void ChinhSuaSuKien() {
-        //tìm sự kiến muô chính sửa
-        //chỉnh sửa sự kiện
-        //verify sự kien
+        WebUI.clickElement(pageQLSK);
+        WebUI.clickElement(pageSuKienB2B);
+        WebUI.clickElement(doituongedit);
+        WebUI.clickElement(btnEditSK);
 
+        WebUI.clickElement(btnLuuSKnew);
+        WebUI.sleep(2);
+        //verify sự kien
     }
 
 
     //Xóa Sự Kiên B2B
-    By btnXoaSK = By.xpath("//div[2]/div/div/div[2]/div[7]/div/button[2]");
+    By doituongcanxoa = By.xpath("//div[2]/div/div/div[2]/div/div[2]/div/div[6]");
+    By btnXoaSK = By.xpath("//div/div[2]/div/div[2]/div/div[6]/div[8]/div/button[2]");
     By popupXoaSK = By.xpath("//div/div[2]/button[2]");
     public void XoaSuKien() {
         WebUI.clickElement(pageQLSK);
         WebUI.clickElement(pageSuKienB2B);
+        WebUI.clickElement(doituongcanxoa);
+        WebUI.clickElement(btnXoaSK);
+        WebUI.clickElement(popupXoaSK);
     }
+
+    By MessageXoaSKthanhcong = By.xpath("//div[contains(text(),'Thao tác thành công')]");
+
+    public void verifyMessageXoaSuKien (String messageXoathanhcong){
+        boolean xoathanhcong = WebUI.getTextElement(MessageXoaSKthanhcong).equals(messageXoathanhcong);
+        Assert.assertTrue(xoathanhcong,"Fail");
+    }
+
 
 
 //    public void checkSearchTableByColumn(String value) {

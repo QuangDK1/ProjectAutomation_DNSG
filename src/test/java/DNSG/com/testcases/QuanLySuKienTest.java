@@ -50,11 +50,18 @@ public class QuanLySuKienTest extends BaseTest {
         loginPage.LoginThanhCong(excelHelper.getCellData(2,5),
                                  excelHelper.getCellData(3,5));
         quanLySuKienPage.XoaSuKien();
+        quanLySuKienPage.verifyMessageXoaSuKien(excelHelper.getCellData(11,5));
     }
 
     @Test(priority = 3)
     public void ChinhSuaSuKienB2BThanhCong(){
-
+        loginPage = new LoginPage();
+        quanLySuKienPage = new QuanLySuKienPage();
+        excelHelper = new ExcelHelper();
+        excelHelper.setExcelFile("src\\main\\resources\\datatest\\QuanLySuKienB2B.xlsx","XoaSuKienB2B");
+        loginPage.LoginThanhCong(excelHelper.getCellData(2,5),
+                                 excelHelper.getCellData(3,5));
+        quanLySuKienPage.ChinhSuaSuKien();
     }
 
 }
