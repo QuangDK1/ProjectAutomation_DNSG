@@ -54,10 +54,11 @@ public class DonViTaiTroTest extends BaseTest {
         donViTaiTroPage = new DonViTaiTroPage();
         excelHelper = new ExcelHelper();
         excelHelper.setExcelFile("src\\main\\resources\\datatest\\DonViTaiTroPage.xlsx","EditDonVI");
-        loginPage.LoginThanhCong(excelHelper.getCellData(1,1),
-                                 excelHelper.getCellData(2,1));
-        donViTaiTroPage.EditDonViTaiTro();
-        donViTaiTroPage.verifyChinhSuDonViThanhCong();
+        loginPage.LoginThanhCong(excelHelper.getCellData(2,5),
+                                 excelHelper.getCellData(3,5));
+        donViTaiTroPage.EditDonViTaiTro(excelHelper.getCellData(8,5),
+                                        excelHelper.getCellData(9,5));
+        donViTaiTroPage.verifyChinhSuDonViThanhCong(excelHelper.getCellData(11,5));
 
 
     }

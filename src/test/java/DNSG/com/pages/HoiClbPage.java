@@ -64,17 +64,22 @@ public class HoiClbPage {
 
 
     //Chỉnh Sửa Hội Clb
-    By btnEditHoiClb = By.xpath("//div/div[3]/div[8]/div/button[1]");
+    By iconedithoi = By.xpath("//div[2]/div/div[2]/div/div[2]/div[10]/div/button[1]");
     By btnLuutrongEditHoi = By.xpath("//div/div[3]/button[2]");
-    public void EditHoiClb(){
+
+    public void EditHoiClb(String EditTenHoi, String EditEmailHoi, String EditChietKhau){
         WebUI.clickElement(clickpagehoiclbadmin);
-        WebUI.clickElement(btnEditHoiClb);
+        WebUI.clickElement(iconedithoi);
+        WebUI.setText(tenhoiclb,EditTenHoi);
+        WebUI.setText(emailhoiclb,EditEmailHoi);
+        WebUI.setText(chieckhau,EditChietKhau);
+        WebUI.clickElement(btnluuhoiclb);
         WebUI.sleep(1.5);
-        WebUI.clickElement(btnLuutrongEditHoi);
+
     }
     By messageChinhSuaHoi = By.xpath("//div[contains(text(),'Thao tác thành công')]");
-    public void verifyChinhSuaThanhCong(){
-        boolean MessageChinhSuHoi = WebUI.getTextElement(messageChinhSuaHoi).equals("Thao tác thành công");
+    public void verifyChinhSuaThanhCong(String messageEditHoithanhcong){
+        boolean MessageChinhSuHoi = WebUI.getTextElement(messageChinhSuaHoi).equals(messageEditHoithanhcong);
         Assert.assertTrue(MessageChinhSuHoi,"Fail");
     }
 

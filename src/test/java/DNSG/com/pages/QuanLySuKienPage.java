@@ -49,7 +49,7 @@ public class QuanLySuKienPage {
 
         //Logo
         WebUI.clickElement(avtSuKieb);
-        WebUI.uploadFileRobotClass("D:\\Code_Automation\\ProjectAutomation_DNSG\\src\\main\\resources\\datatest\\img4.png");
+        WebUI.uploadFileRobotClass("D:\\Code_Automation\\ProjectAutomation_DNSG\\src\\main\\resources\\datatest\\img7.png");
 
         //Tên sự kiện
         WebUI.setText(tensukien,TenSuKien);
@@ -97,18 +97,66 @@ public class QuanLySuKienPage {
 
 
     //Chỉnh sửa Sự Kiện B2B
+    By editngaydienraSK = By.xpath("//div/div/div[2]/div/div/div[2]/div/div[1]/button[1]");
     By btnEditSK = By.xpath("//div/div/div[2]/div/div[2]/div/div[1]/div[8]/div/button[1]");
-    By doituongedit = By.xpath("//div/div[2]/div/div/div[2]/div/div[2]/div/div[1]");
-    public void ChinhSuaSuKien() {
+    //By doituongedit = By.xpath("//div/div[2]/div/div/div[2]/div/div[2]/div/div[1]");
+    By editgiobatdau = By.xpath("//li[@aria-label='8 giờ']");
+    By editphutbatdau = By.xpath("//li[@aria-label='10 phút']");
+    By editgioketthuc = By.xpath("//li[@aria-label='16 giờ']");
+    By editphutketthuc = By.xpath("//li[@aria-label='10 phút']");
+    By editTinh = By.xpath("li[normalize-space()='Bình Định']");
+    By MesageEditSKthanhcong = By.xpath("//div[contains(text(),'Thao tác thành công')]");
+    public void ChinhSuaSuKien(String tenskedit, String EditDiaDiem, String Editmotangan, String Editgioithieuchung) {
         WebUI.clickElement(pageQLSK);
         WebUI.clickElement(pageSuKienB2B);
-        WebUI.clickElement(doituongedit);
+        //WebUI.clickElement(doituongedit);
         WebUI.clickElement(btnEditSK);
 
+        //Edit ten su kien
+        WebUI.setText(tensukien,tenskedit);
+
+
+        //Edit ngay dien ra
+        WebUI.clickElement(ngaydienrasukien);
+        WebUI.clickElement(btnlichSK);
+        WebUI.clickElement(editngaydienraSK);
+
+        //Edit thời gian bắt đâu
+        WebUI.clickElement(thoigianbatdauSK);
+        WebUI.clickElement(btnselectthoigianbatdau);
+        WebUI.clickElementWithJS(editgiobatdau);
+        WebUI.clickElementWithJS(editphutbatdau);
+
+        //edit thoi gian ket thuc
+        WebUI.clickElement(btnselectthoigianketthuc);
+        WebUI.scrollToElementWithJS(editgioketthuc);
+        WebUI.clickElementWithJS(editgioketthuc);
+        WebUI.clickElementWithJS(editphutketthuc);
+
+        //địa diểm
+        WebUI.clickElement(SelectTinhThanhPho);
+        WebUI.clickElementWithJS(tinh);
+        WebUI.setText(diemdiem,EditDiaDiem);
+
+        //Edit Giới thiệu
+        WebUI.getWebElement(gioithieumotangan).clear();
+        WebUI.setText(gioithieumotangan,Editmotangan);
+
+        //Edit Giới thiệu chung
+        WebUI.getWebElement(gioithieuchung).clear();
+        WebUI.setText(gioithieuchung,Editgioithieuchung);
+
+
+        //Edit Click Button Lưu Sự Kiện
+        WebUI.scrollToElementWithJS(btnLuuSKnew);
         WebUI.clickElement(btnLuuSKnew);
         WebUI.sleep(2);
-        //verify sự kien
     }
+    public void verifyMessageEditSuKienThanhCong (String messageEditthanhcong){
+        boolean Editthanhcong = WebUI.getTextElement(MesageEditSKthanhcong).equals(messageEditthanhcong);
+        Assert.assertTrue(Editthanhcong,"Fail");
+    }
+
 
 
     //Xóa Sự Kiên B2B
@@ -122,6 +170,7 @@ public class QuanLySuKienPage {
         WebUI.clickElement(btnXoaSK);
         WebUI.clickElement(popupXoaSK);
     }
+
 
     By MessageXoaSKthanhcong = By.xpath("//div[contains(text(),'Thao tác thành công')]");
 

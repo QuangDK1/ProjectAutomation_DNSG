@@ -28,7 +28,7 @@ public class DonViTaiTroPage {
         WebUI.clickElement(clickpagedonvitaitroadmin);
         WebUI.clickElement(buttonAddDonViTaiTro);
         WebUI.clickElement(Logo);
-        WebUI.uploadFileRobotClass("D:\\Code_Automation\\ProjectAutomation_DNSG\\src\\main\\resources\\datatest\\img1.jpg");
+        WebUI.uploadFileRobotClass("D:\\Code_Automation\\ProjectAutomation_DNSG\\src\\main\\resources\\datatest\\img6.jpg");
         WebUI.setText(Tendonvi,Ten_Don_Vi);
         WebUI.setText(Linkdonvi,Link_Don_Vi);
         WebUI.clickElement(buttonLuuDonvi);
@@ -66,18 +66,26 @@ public class DonViTaiTroPage {
 
 
     //Chỉnh sửa ơn vị
-    By buttonEditDonViTaiTro = By.xpath("//div/div[3]/div[5]/div/button[1]");
+    By iconeditdonvi = By.xpath("//div/div[2]/div/div[2]/div/div[5]/div[7]/div/button[1]");
     By buttonLuuEdit = By.xpath("//div[3]/div[3]/div/div[3]/button[2]");
-    public void EditDonViTaiTro(){
+    public void EditDonViTaiTro(String EditTenDonVi, String EditLinkDonVi){
         WebUI.clickElement(clickpagedonvitaitroadmin);
-        WebUI.clickElement(doituong);
-        WebUI.clickElement(buttonEditDonViTaiTro);
-        WebUI.clickElement(buttonLuuEdit);
-        WebUI.sleep(2);
+        WebUI.clickElementWithJS(iconeditdonvi);
+
+        //TenDonVi
+        WebUI.setText(Tendonvi,EditTenDonVi);
+
+        //Link
+        WebUI.setText(Linkdonvi,EditLinkDonVi);
+
+        WebUI.clickElement(buttonLuuDonvi);
+        WebUI.sleep(1.5);
+
     }
+
     By messageChinhSuDonViThanhCong = By.xpath("//div[contains(text(),'Thao tác thành công')]");
-    public void verifyChinhSuDonViThanhCong(){
-        boolean MessageChinhSuaDonVIThanhCong = WebUI.getTextElement(messageChinhSuDonViThanhCong).equals("Thao tác thành công");
+    public void verifyChinhSuDonViThanhCong(String messageeditthanhcong ){
+        boolean MessageChinhSuaDonVIThanhCong = WebUI.getTextElement(messageChinhSuDonViThanhCong).equals(messageeditthanhcong);
         Assert.assertTrue(MessageChinhSuaDonVIThanhCong,"Fail");
     }
 

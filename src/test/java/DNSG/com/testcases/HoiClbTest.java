@@ -45,9 +45,11 @@ public class HoiClbTest extends BaseTest {
         hoiClbPage = new HoiClbPage();
         excelHelper = new ExcelHelper();
         excelHelper.setExcelFile("src\\main\\resources\\datatest\\HoiClb.xlsx","EditHoiClb");
-        loginPage.LoginThanhCong(excelHelper.getCellData(1,1),
-                                 excelHelper.getCellData(2,1));
-        hoiClbPage.EditHoiClb();
-        hoiClbPage.verifyChinhSuaThanhCong();
+        loginPage.LoginThanhCong(excelHelper.getCellData(2,5),
+                                 excelHelper.getCellData(3,5));
+        hoiClbPage.EditHoiClb(excelHelper.getCellData(8,5),
+                            excelHelper.getCellData(9,5),
+                            excelHelper.getCellData(10,5));
+        hoiClbPage.verifyChinhSuaThanhCong(excelHelper.getCellData(13,5));
     }
 }

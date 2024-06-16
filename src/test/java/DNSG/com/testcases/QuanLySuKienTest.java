@@ -58,10 +58,14 @@ public class QuanLySuKienTest extends BaseTest {
         loginPage = new LoginPage();
         quanLySuKienPage = new QuanLySuKienPage();
         excelHelper = new ExcelHelper();
-        excelHelper.setExcelFile("src\\main\\resources\\datatest\\QuanLySuKienB2B.xlsx","XoaSuKienB2B");
+        excelHelper.setExcelFile("src\\main\\resources\\datatest\\QuanLySuKienB2B.xlsx","EditSuKienB2B");
         loginPage.LoginThanhCong(excelHelper.getCellData(2,5),
                                  excelHelper.getCellData(3,5));
-        quanLySuKienPage.ChinhSuaSuKien();
+        quanLySuKienPage.ChinhSuaSuKien(excelHelper.getCellData(9,5),
+                                        excelHelper.getCellData(14,5),
+                                        excelHelper.getCellData(15,5),
+                                        excelHelper.getCellData(16,5));
+        quanLySuKienPage.verifyMessageEditSuKienThanhCong(excelHelper.getCellData(18,5));
     }
 
 }
